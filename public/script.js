@@ -5,9 +5,11 @@ let casute=[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ];
 let bifate=[];
-for (let i=0; i<=27; i++)
-    bifate[i]=0;
 let alese=[];
+
+let posibilitati=[];
+let nrPosibilitati=90;
+let cifre=[];
 
 function numereAlese(x)
 {
@@ -22,30 +24,26 @@ function numereAlese(x)
     }
 }
 
-window.onload=()=>{
+function newBilet()
+{
+    for (let i=0; i<=27; i++)
+    {
+        bifate[i]=0;
+        casute[i]=0;
+    }
 
-    socket=io();
-
-    socket.on('number', newNumber);
-    socket.on("linieCorectaYou", linieCorectaYou);
-    socket.on("linieCorectaSomeone", linieCorectaSomeone);
-    socket.on("linieGresitaYou", linieGresitaYou);
-    socket.on("linieGresitaSomeone", linieGresitaSomeone);
-    socket.on("correctBingoYou", bingoCorectYou);
-    socket.on("correctBingoSomeone", bingoCorectSomeone);
-    socket.on("wrongBingoYou", bingoGresitYou);
-    socket.on("wrongBingoSomeone", bingoGresitSomeone);
-
-    socket.on("numereAlese", numereAlese);
-
-    let posibilitati=[];
-    let nrPosibilitati=90;
-    let cifre=[];
+    for (let i=0; i<butoane.length; i++)
+    {
+        butoane[i].classList.remove("column2");
+        butoane[i].classList.add("column");
+    }
 
     for (let i=1; i<=90; i++)
     {
         posibilitati[i]=i;
     }
+    nrPosibilitati=90;
+
     for (let i=0; i<=9; i++)
         cifre[i]=0;
 
@@ -99,6 +97,7 @@ window.onload=()=>{
         numere[k].innerText="";
 
     // gasim o configurare buna a pozitiilor
+    gasit=0;
     configuram(0);
 
     // punem numerele pe locurile lor
@@ -130,10 +129,33 @@ window.onload=()=>{
     }
 }
 
+
+window.onload=()=>{
+
+    socket=io();
+
+    socket.on('number', newNumber);
+    socket.on("linieCorectaYou", linieCorectaYou);
+    socket.on("linieCorectaSomeone", linieCorectaSomeone);
+    socket.on("linieGresitaYou", linieGresitaYou);
+    socket.on("linieGresitaSomeone", linieGresitaSomeone);
+    socket.on("correctBingoYou", bingoCorectYou);
+    socket.on("correctBingoSomeone", bingoCorectSomeone);
+    socket.on("wrongBingoYou", bingoGresitYou);
+    socket.on("wrongBingoSomeone", bingoGresitSomeone);
+
+    socket.on("numereAlese", numereAlese);
+
+    newBilet();
+    
+}
+
 function newNumber(data)
 {
     numarAles.innerText=data;
 }
+
+var ticket=document.getElementById("ticket");
 
 var start=document.getElementById("start");
 var info=document.getElementById("informatii");
@@ -149,6 +171,7 @@ var bingoB=document.getElementById("bingo");
 linieB.addEventListener("click", ()=>{checkLine();});
 bingoB.addEventListener("click", ()=>{checkBingo();});
 start.addEventListener("click", ()=>{startGame();});
+ticket.addEventListener("click", ()=>{changeTicket();});
 
 for (let i=0; i<butoane.length; i++)
 {
@@ -183,12 +206,14 @@ function linieGresitaSomeone(){
 }
 
 function bingoCorectYou(){
+    gameIsStarted=false;
     info.innerText="CORRECT BINGO, CONGRATULATIONS!";
     setTimeout(function(){
         info.innerText="";
     }, 3900);
 }
 function bingoCorectSomeone(){
+    gameIsStarted=false;
     info.innerText="SOMEONE JUST GOT BINGO!";
     setTimeout(function(){
         info.innerText="";
@@ -207,6 +232,11 @@ function bingoGresitSomeone(){
     }, 3900);
 }
 
+function changeTicket()
+{
+    if (gameIsStarted==false)
+        newBilet();
+}
 
 
 let indici=[];
@@ -228,14 +258,15 @@ function checkBingo()
         socket.emit("bingo", numereBingo);
 }
 
+let gameIsStarted=false;
 function startGame()
 {
     socket.emit("start");
+    gameIsStarted=true;
 }
 
 function checkLine()
 {
-    console.log("clicked line");
     let nu=false;
     let h=0;
     for (let i=0; i<3; i++)
