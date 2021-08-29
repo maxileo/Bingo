@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js" integrity="sha384-DkkWv9oJFWLIydBXXjkBWnG1/fuVhw8YPBq37uvvD6WSYRFRqr21eY5Dg9ZhmWdy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <div class="informatiiWrap">
+        <div id="informatii"> </div>
+    </div>
+    <div class="alignMare">
+        <div class="align">
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">1</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">2</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">3</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">4</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">5</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">6</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">7</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">8</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">9</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">10</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">11</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">12</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">13</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">14</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">15</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">16</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">17</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">18</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">19</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">20</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">21</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">22</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">23</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">24</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">25</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">26</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">27</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">28</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">29</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">30</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">31</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">32</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">33</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">34</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">35</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">36</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">37</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">38</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">39</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">40</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">41</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">42</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">43</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">44</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">45</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">46</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">47</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">48</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">49</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">50</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">51</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">52</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">53</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">54</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">55</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">56</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">57</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">58</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">59</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">60</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">61</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">62</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">63</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">64</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">65</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">66</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">67</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">68</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">69</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">70</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">71</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">72</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">73</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">74</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">75</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">76</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">77</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">78</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">79</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">80</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+            <div class="rand">
+                <div class="numarWrapMic">
+                    <div class="numarMic">81</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">82</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">83</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">84</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">85</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">86</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">87</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">88</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">89</div>
+                    <div class="cercMic"></div>
+                </div>
+                <div class="numarWrapMic">
+                    <div class="numarMic">90</div>
+                    <div class="cercMic"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="numarWrap">
+        <div id="numarAles">0</div>
+        <div id="cerc"></div>
+    </div>
+    <div id="bilet">
+        <div id="fundalBilet">
+            <div class="row">
+                <button class="column">
+                    <div class="completed"></div>
+                    <div class="number"> 1 </div>
+                </button>
+                <button class="column">
+                    <div class="number"> 2 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 3 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 4 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 5 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 6 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 7 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 8 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 9 </div>
+                    <div class="completed"></div>
+                </button>
+            </div>
+            <div class="row">
+                <button class="column">
+                    <div class="number"> 10 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 11 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 12 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 13 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 14 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 15 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 16 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 17 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 18 </div>
+                    <div class="completed"></div>
+                </button>
+            </div>
+            <div class="row">
+                <button class="column">
+                    <div class="number"> 19 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 20 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 21 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 22 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 23 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 24 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 25 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 26 </div>
+                    <div class="completed"></div>
+                </button>
+                <button class="column">
+                    <div class="number"> 27 </div>
+                    <div class="completed"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="butoaneWrap">
+        <button id="start" class="butoane">START</button>
+        <button id="linie" class="butoane">LINE</button>
+        <button id="bingo" class="butoane">BINGO</button>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
