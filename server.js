@@ -26,6 +26,8 @@ let nrPosibNrAles=90;
 let numereAlesePanaAcum=[];
 let k=1;
 
+let startAgain, startAgain2;
+
 k=1;
 function newConnection(socket)
 {
@@ -53,6 +55,7 @@ function newConnection(socket)
                 clearInterval(alesNumere);
                 gameStarted=false;
                 foundLine=false;
+                foundBingo=true;
             }
             else
             {
@@ -63,7 +66,6 @@ function newConnection(socket)
                     startInterval(socket);
                 }, 4000);
             }
-            foundBingo=true;
         }
     }
 
@@ -71,6 +73,7 @@ function newConnection(socket)
     {
         if (foundLine==false && foundBingo==false)
         {
+            let linieGasita=false;
             console.log(x);
             console.log(x[0]);
             let ok=true;
@@ -83,23 +86,31 @@ function newConnection(socket)
             {
                 if (foundLine==false)
                 {
+                    clearTimeout(startAgain2);
+
                     console.log("linie corecta");
                     socket.emit("linieCorectaYou");
                     socket.broadcast.emit("linieCorectaSomeone");
                     clearInterval(alesNumere);
-                    setTimeout(function(){
-                        startInterval(socket);
-                    }, 4000);
+                    if (k<=90)
+                    {
+                        startAgain2=setTimeout(function(){
+                            startInterval(socket);
+                        }, 4000);
+                    }
                     foundLine=true;
+                    linieGasita=true;
                 }
             }
             else
             {
+                clearTimeout(startAgain);
+
                 console.log("linie gresita");
                 socket.emit("linieGresitaYou");
                 socket.broadcast.emit("linieGresitaSomeone");
                 clearInterval(alesNumere);
-                setTimeout(function(){
+                startAgain=setTimeout(function(){
                     startInterval(socket);
                 }, 4000);
             }

@@ -36,6 +36,10 @@ function newBilet()
     {
         butoane[i].classList.remove("column2");
         butoane[i].classList.add("column");
+
+        completed[i].style.display="none";
+
+        numere[i].style.color="coral";
     }
 
     for (let i=1; i<=90; i++)
@@ -129,7 +133,7 @@ function newBilet()
     }
 }
 
-
+let voice;
 window.onload=()=>{
 
     socket=io();
@@ -148,12 +152,30 @@ window.onload=()=>{
 
     newBilet();
     
+    voice=new p5.Speech('ro-Ro');
+    voice.setLang("ro-Ro");
+}
+
+function setup()
+{
+    pressSound = loadSound('assets/butonPress.mp3');
 }
 
 function newNumber(data)
 {
+    biluta.classList.add("bounce-top");
+    setTimeout(function(){
+        biluta.classList.remove("bounce-top");
+    }, 1000);
+    if (musicOn==true)
+        voice.speak(''+data);
     numarAles.innerText=data;
 }
+
+var biluta=document.getElementById("biluta");
+
+var bingoText=document.getElementById("bingoWrapAlign");
+var linieText=document.getElementById("linieWrapAlign");
 
 var ticket=document.getElementById("ticket");
 
@@ -168,6 +190,21 @@ var butoane=document.getElementsByClassName('column');
 var completed=document.getElementsByClassName('completed');
 var linieB=document.getElementById("linie");
 var bingoB=document.getElementById("bingo");
+
+var butoaneJos=document.getElementsByClassName("butoaneJos");
+
+var music=document.getElementById("music");
+let musicOn=true;
+music.addEventListener("click", ()=>{changeMusic()});
+function changeMusic()
+{
+    musicOn=!musicOn;
+    if (musicOn==true)
+        music.innerText="SOUND ON";
+    else
+        music.innerText="SOUND OFF";
+}
+
 linieB.addEventListener("click", ()=>{checkLine();});
 bingoB.addEventListener("click", ()=>{checkBingo();});
 start.addEventListener("click", ()=>{startGame();});
@@ -179,27 +216,66 @@ for (let i=0; i<butoane.length; i++)
         clicked(i);
     });
 }
+/*
+for (let i=0; i<butoaneJos.length; i++)
+{
+    butoaneJos[i].addEventListener("click", ()=>
+    {
+        addJello(butoaneJos[i]);
+    });
+}
+function addJello(obj){
+    obj.classList.add("jello");
+    setTimeout(function(){
+        obj.classList.remove("jello");
+    }, 1000);
+}
+*/
+
+function showBingo(care)
+{
+    let obj;
+    if (care==1)
+        obj=bingoText;
+    else
+        obj=linieText;
+    obj.style.display="flex";
+    setTimeout(function(){
+        obj.style.opacity='0';
+        setTimeout(function(){
+            obj.style.display="none";
+            obj.style.opacity='1';
+        }, 1100);
+    }, 3400);
+}
+
+
+let lastTimeWrongLineYou=0;
 
 function linieCorectaYou(){
-    info.innerText="CORRECT LINE, CONGRATULATIONS!";
+    showBingo(2);
+    voice.speak("LINIE CORECTĂ, CONTINUĂM PENTRU BINGO");
     setTimeout(function(){
         info.innerText="";
     }, 3900);
 }
 function linieCorectaSomeone(){
     info.innerText="SOMEONE JUST GOT A CORRECT LINE!";
+    voice.speak("CINEVA A FĂCUT LINIE CORECTĂ, CONTINUAM PENTRU BINGO");
     setTimeout(function(){
         info.innerText="";
     }, 3900);
 }
 function linieGresitaYou(){
     info.innerText="WRONG LINE, BE MORE CAREFUL!";
+    voice.speak("LINIE GREȘITĂ, CONTINUĂM PENTRU BINGO");
     setTimeout(function(){
         info.innerText="";
     }, 3900);
 }
 function linieGresitaSomeone(){
     info.innerText="SOMEONE JUST GOT A WRONG LINE!";
+    voice.speak("CINEVA A DAT O LINIE GREȘITĂ, CONTINUĂM PENTRU BINGO");
     setTimeout(function(){
         info.innerText="";
     }, 3900);
@@ -207,7 +283,8 @@ function linieGresitaSomeone(){
 
 function bingoCorectYou(){
     gameIsStarted=false;
-    info.innerText="CORRECT BINGO, CONGRATULATIONS!";
+    showBingo(1);
+    voice.speak("BINGO CORECT, FELICITĂRI");
     setTimeout(function(){
         info.innerText="";
     }, 3900);
@@ -215,18 +292,21 @@ function bingoCorectYou(){
 function bingoCorectSomeone(){
     gameIsStarted=false;
     info.innerText="SOMEONE JUST GOT BINGO!";
+    voice.speak("CINEVA A FĂCUT BINGO")
     setTimeout(function(){
         info.innerText="";
     }, 3900);
 }
 function bingoGresitYou(){
     info.innerText="WRONG BINGO, BE MORE CAREFUL!";
+    voice.speak("BINGO GREȘIT");
     setTimeout(function(){
         info.innerText="";
     }, 3900);
 }
 function bingoGresitSomeone(){
     info.innerText="SOMEONE JUST GOT A WRONG BINGO!";
+    voice.speak("CINEVA A FĂCUT UN BINGO GREȘIT");
     setTimeout(function(){
         info.innerText="";
     }, 3900);
@@ -319,10 +399,22 @@ function schimbaCuloarea(i)
         completed[indici[j]].style.backgroundColor="coral";
 }
 
+let pressSound;
 function clicked(h)
 {
     if (casute[h]!=0)
     {
+        if (musicOn==true)
+        {
+            pressSound.setVolume(0.25);
+            pressSound.play();
+        }
+        
+        butoane[h].classList.add("jello");
+        setTimeout(function(){
+            butoane[h].classList.remove("jello");
+        }, 1000);
+
         if (bifate[h]==0)
         {
             completed[h].style.display="block";

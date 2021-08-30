@@ -5,17 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
+    
+    
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js" integrity="sha384-DkkWv9oJFWLIydBXXjkBWnG1/fuVhw8YPBq37uvvD6WSYRFRqr21eY5Dg9ZhmWdy" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@600&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rampart+One&display=swap" rel="stylesheet">
+
+    <script src="p5.speech.js"></script>
+
     <title>Document</title>
 </head>
 <body>
+    <button id="music">
+        SOUND ON
+    </button>
+
+    <div id="bingoWrapAlign" class="wrapAlign">
+        <div id="bingoWrap">
+            <div id="B" class="litera">B</div>
+            <div id="I" class="litera">I</div>
+            <div id="N" class="litera">N</div>
+            <div id="G" class="litera">G</div>
+            <div id="O" class="litera">O</div>
+            
+        </div>
+    </div>
+    <div id="linieWrapAlign" class="wrapAlign">
+        <div id="bingoWrap">
+            <div id="L2" class="litera">L</div>
+            <div id="I2" class="litera">I</div>
+            <div id="N2" class="litera">N</div>
+            <div id="I22" class="litera">I</div>
+            <div id="E2" class="litera">E</div>
+            
+        </div>
+    </div>
     <div class="informatiiWrap">
         <div id="informatii"> </div>
     </div>
@@ -401,7 +434,7 @@
             </div>
         </div>
     </div>
-    <div class="numarWrap">
+    <div class="numarWrap" id="biluta">
         <div id="numarAles">0</div>
         <div id="cerc"></div>
     </div>
@@ -579,10 +612,10 @@
     </div>
 
     <div id="butoaneWrap">
-        <button id="ticket" class="butoane">TICKET</button>
-        <button id="start" class="butoane">START</button>
-        <button id="linie" class="butoane">LINE</button>
-        <button id="bingo" class="butoane">BINGO</button>
+        <button id="ticket" class="butoane butoaneJos">TICKET</button>
+        <button id="start" class="butoane butoaneJos">START</button>
+        <button id="linie" class="butoane butoaneJos">LINE</button>
+        <button id="bingo" class="butoane butoaneJos">BINGO</button>
     </div>
     
 
