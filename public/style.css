@@ -106,8 +106,6 @@ body{
 
     z-index: 4;
     
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: rgb(50, 50, 50);
 
 }
 
@@ -256,8 +254,6 @@ body{
 {
     .number{
         font-size: 4vw;
-
-        -webkit-text-stroke-width: 0.2vw;
     }
     .butoane{
         font-size: 4vw;
